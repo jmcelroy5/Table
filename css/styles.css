@@ -1,0 +1,72 @@
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* table header */
+tr:first-child{
+    background-color: #464646;
+    color: #d5dc81; /* khaki */
+}
+
+.field-name{
+    cursor: pointer;
+}
+
+/* all rows except header */
+.row {
+    color: #585757; /* dim gray */ 
+}
+
+.delete{
+    width: 20px;
+    cursor: pointer;
+}
+
+/* alternating row colors */
+.row:nth-child(even){
+    background-color: #f8f8f8; /* white smoke */
+}
+.row:nth-child(odd){
+    background-color: #ebebeb; /* lavender */
+}
+
+/* cells */
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+/* inside borders */
+th{
+    border-right: 2px solid #5c5555;
+}
+td{
+    border-right: 2px solid #d7d7d7; /* lighter gray  */   
+}
+
+/* outside borders */
+table {
+    border-radius: 10px;
+    border-bottom: 2px solid #d7d7d7; /* lighter gray  */      
+    border-spacing: 0;
+}
+td:first-child{
+    border-left: 2px solid #d7d7d7;
+}
+td:last-child{
+    border-right: 2px solid #d7d7d7;
+}
+
+/* rounded corner cell borders */
+tr:first-child th:first-child{
+    border-top-left-radius:10px
+}
+tr:first-child th:last-child{
+    border-top-right-radius:10px
+}
+tr:last-child td:first-child {
+    border-bottom-left-radius:10px;
+}
+tr:last-child td:last-child {
+    border-bottom-right-radius:10px
+}

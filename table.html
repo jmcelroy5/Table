@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>A Backbone Table</title>
+    <!-- javascript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://documentcloud.github.com/underscore/underscore.js"></script>
+    <script src="http://documentcloud.github.com/backbone/backbone.js"></script>
+    <!-- styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <style>
+
+    </style>
+
+</head>
+<body>
+
+    <div id="table-container"></div>
+
+    <!-- Template for table skeleton / header-->
+    <script type="text/template" id="table-template">
+        <table id="table" >
+            <tr>
+                <% for (var i = 0; i < fields.length; i++) { %>
+                    <th> <span class="field-name"> <%= fields[i] %> </span> </th>
+                <% } %>
+                <th></th>
+            </tr>
+        </table>
+    </script>
+
+    <!-- Template for individual row-->
+    <script type="text/template" id="row-template">
+        <td> <%= ID %> </td>
+        <td> <%= Name %> </td>
+        <td> <%= Birthdate %> </td>
+        <td> <%= Gender %> </td>
+        <td> <%= Address %> </td>
+        <td> <%= City %> </td>
+        <td> <%= State %> </td>
+        <td><img class="delete" src="img/delete-icon.png"></td>
+    </script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>
