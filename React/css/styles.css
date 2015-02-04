@@ -3,7 +3,7 @@ body{
 }
 
 /* table header */
-tr:first-child{
+thead{
     background-color: #464646;
     color: #d5dc81; /* khaki */
 }
@@ -53,15 +53,12 @@ table {
 td:first-child{
     border-left: 2px solid #d7d7d7;
 }
-td:last-child{
-    border-right: 2px solid #d7d7d7;
-}
 
 /* rounded corner cell borders */
-tr:first-child th:first-child{
+thead th:first-child{
     border-top-left-radius:10px
 }
-tr:first-child th:last-child{
+thead th:last-child{
     border-top-right-radius:10px
 }
 tr:last-child td:first-child {

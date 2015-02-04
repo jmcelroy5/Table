@@ -1,5 +1,8 @@
 var RowModel = Backbone.Model.extend({
-    defaults: {},
+    defaults: {
+        id: '',
+        name: ''
+    },
     initialize: function(){
         this.set("Birthdate", this.formatBirthday(this.get("Birthdate")));
     },
@@ -17,6 +20,7 @@ var RowModel = Backbone.Model.extend({
 
 var RowCollection = Backbone.Collection.extend({
     model: RowModel,
+    url: "/ratings",
     comparator: function(row){
         return row.get("ID");
     },

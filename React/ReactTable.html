@@ -1,0 +1,99 @@
+<!-- index.html -->
+<html>
+  <head>
+    <title>A React Table</title>
+    <script src="http://fb.me/react-0.12.2.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script type="text/jsx">
+      var TableRow = React.createClass({
+        render: function(){
+         var cells = [];
+          for (var key in this.props.person){
+            cells.push(<td>{this.props.person[key]}</td>);
+          }
+
+          return (
+            <tr className="row">
+              {cells}
+              <td><img className="delete" onClick={this.handleDelete} src="img/delete-icon.png" /></td>
+            </tr>
+          );
+        },
+        handleDelete: function(){
+          people = people.filter(function(person){
+            return person.ID !== this.props.person.ID;
+          }.bind(this));
+          renderTable();
+        }
+      });
+
+      var Header = React.createClass({
+        render: function(){
+          return (
+            <th><span onClick={this.sortByField} className="field-name">{this.props.text}</span></th>
+          );
+        },
+        sortByField: function(){
+          var field = this.props.text;
+          people.sort(function(a,b){
+            if(a[field] < b[field]) return -1;
+            if(a[field] > b[field]) return 1;
+            return 0;
+          });
+          renderTable();
+        }
+      })
+
+      var MyTable = React.createClass({
+        render: function() {
+          var headers = this.props.fields.map(function(field) {
+            return <Header text={field} />
+          });
+
+          var rows = this.props.people.map(function(person) {
+            return (
+              <TableRow
+              key={person.ID} 
+              person={person} />
+            );
+          });
+
+          return (
+            <table>
+              <thead>
+                {headers}
+                <th></th>
+              </thead>
+              <tbody>{rows}</tbody>
+            </table>
+          );
+        },
+        sortByField: function(e){
+          var field = e.currentTarget
+        }
+      });
+
+      people = [ {"ID":"0","Name":"Caitlin","Gender":"Female","Address":"56 W State St. #2","City":"Chicago","State":"IL"},
+        {"ID":"1","Name":"Terrence","Gender":"Male","Address":"1120 Milwaukee Ave.","City":"Chicago","State":"IL"},
+        {"ID":"2","Name":"Michael","Gender":"Male","Address":"6660 Campus Dr.","City":"St. Louis","State":"MO"},
+        {"ID":"3","Name":"Chris","Gender":"Male","Address":"514 N. Paulina St.","City":"Chicago","State":"IL"},
+        {"ID":"4","Name":"Gabrielle","Gender":"Female","Address":"1940 Brooktree Ct.","City":"Westlake Village","State":"CA"}]
+
+      var fields = ['ID', 'Name', 'Gender', 'Address', 'City', 'State'];
+
+      var renderTable = function(){
+        console.log(people);
+        React.render(<MyTable people={people} fields={fields}/>, document.body);
+      }
+
+      renderTable();
+
+    </script>
+  </body>
+</html>
